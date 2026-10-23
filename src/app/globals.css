@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #eef1f5;
+  --surface: #ffffff;
+  --surface-muted: #e4e9f0;
+  --foreground: #172033;
+  --muted-foreground: #56627a;
+  --border: #d3dae4;
+  --primary: #0e7c7b;
+  --primary-hover: #0b6665;
+  --primary-foreground: #ffffff;
+  --primary-soft: #d6efee;
+  --signal: #c97a0a;
+  --signal-soft: #fdf0d8;
+  --destructive: #c2362f;
+  --destructive-soft: #fbe3e1;
+  --ring: #0e7c7b;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #0d1322;
+  --surface: #151d30;
+  --surface-muted: #1d2740;
+  --foreground: #e6ebf3;
+  --muted-foreground: #98a3b8;
+  --border: #2a3550;
+  --primary: #2fb3b1;
+  --primary-hover: #49c6c4;
+  --primary-foreground: #06201f;
+  --primary-soft: #11393c;
+  --signal: #f2b04a;
+  --signal-soft: #3a2c12;
+  --destructive: #f0726b;
+  --destructive-soft: #3d1a1a;
+  --ring: #2fb3b1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility font-wide {
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Circuit-board dot grid used behind product art */
+@utility dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+/* One orchestrated entrance, used only by the hero */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
