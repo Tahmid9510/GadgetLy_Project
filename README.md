@@ -32,18 +32,12 @@ The app ships with 12 catalogue products as static data (`src/lib/products.ts`).
 
 **Requirements:** Node.js 20.9 or newer, and a Firebase project.
 
-1. **Install dependencies**
+**Install dependencies**
 
    ```bash
    npm install
    ```
-
-2. **Create a Firebase project**
-   - Go to the [Firebase console](https://console.firebase.google.com/) and create a project.
-   - Under **Build → Authentication → Sign-in method**, enable **Email/Password** and **Google**.
-   - Under **Project settings → General → Your apps**, add a **Web app** and copy its config values.
-
-3. **Add environment variables**
+ **Add environment variables**
 
    ```bash
    cp .env.example .env.local
@@ -66,13 +60,6 @@ The app ships with 12 catalogue products as static data (`src/lib/products.ts`).
    npm start
    ```
 
-### Deploying to Vercel
-
-1. Push the repository to GitHub and import it in [Vercel](https://vercel.com/new).
-2. In **Project → Settings → Environment Variables**, add the same six `NEXT_PUBLIC_FIREBASE_*` variables.
-3. Deploy.
-4. In Firebase, go to **Authentication → Settings → Authorized domains** and add your Vercel domain (e.g. `gadgetly.vercel.app`). Google sign-in won't work on that domain until you do.
-
 ## Route summary
 
 | Route | Access | Description |
@@ -87,19 +74,3 @@ The app ships with 12 catalogue products as static data (`src/lib/products.ts`).
 | `/items/add` | **Protected** | Form to add a new product |
 | `/items/manage` | **Protected** | Table of all products with View and Delete actions |
 
-## Project structure
-
-```
-src/
-  app/                  Routes (App Router)
-    items/[id]/         Dynamic product details route
-    items/add/          Protected: add product
-    items/manage/       Protected: manage products
-  components/
-    landing/            Hero and landing sections
-    items/              Product card, art, browser, details, forms, table
-    auth/               Login and register forms
-    ui/                 Buttons, inputs, dropdown, dialog, skeletons
-  context/              Auth, products and theme providers
-  lib/                  Firebase setup, product data, helpers
-```
