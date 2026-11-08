@@ -2,7 +2,7 @@
 
 GadgetLy is a tech gadget store built with **Next.js (App Router)** and **Firebase Authentication**. Visitors browse a catalogue of headphones, phones, laptops, wearables, cameras and gaming gear, filter it, and read full spec sheets. Signed-in users can add new products and manage the catalogue.
 
-**Live demo:** _add your Vercel URL here_
+**Live demo:** https://gadgety-phi.vercel.app/
 
 ## Key features
 
